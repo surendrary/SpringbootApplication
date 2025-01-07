@@ -1,5 +1,6 @@
 package com.springboot_basic.SpringbootApplication.BeansAndDependencies;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
