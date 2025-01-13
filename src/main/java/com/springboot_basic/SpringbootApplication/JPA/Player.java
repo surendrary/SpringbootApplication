@@ -1,20 +1,42 @@
-package com.springboot_basic.SpringbootApplication.SpringbootJdbc;
+package com.springboot_basic.SpringbootApplication.JPA;
+
+import jakarta.persistence.*;
 
 import java.util.Date;
 
-public class Player {
+@Entity
+// @Table(name = "JPA_Player") - We do need this (This is required if table name is different than Bean Name)
+@NamedQuery(
+        name = "getAllPlayers",
+        query="select p from Player p"
+)
+public  class Player {
 
+    @Id
+    @GeneratedValue
     private int id;
+
     private String name;
+
+    // @Column(name="nationality") We do need this (This is required if column name is different than field Name)
     private String nationality;
+
     private Date birthDate;
     private int titles;
-
     public Player(){
 
     }
 
-    public Player(int id, String name, String nationality, Date birthDate,int titles) {
+    public Player(String name, String nationality, Date birthDate, int titles){
+        super();
+        this.name = name;
+        this.nationality = nationality;
+        this.birthDate = birthDate;
+        this.titles = titles;
+
+    }
+
+    public Player(int id, String name, String nationality, Date birthDate, int titles) {
         this.id = id;
         this.name = name;
         this.nationality = nationality;
